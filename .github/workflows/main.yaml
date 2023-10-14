@@ -19,7 +19,9 @@ jobs:
         name: "Authenticate to GCP"
         uses: "google-github-actions/auth@v1"
         with:
-          create_credentials_file: 'true'
+          # create_credentials_file: 'true'
+          token_format: "access_token"
+          access_token_lifetime: "120s"
           workload_identity_provider: "principal://iam.googleapis.com/projects/1000907336307/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider"
           service_account: "github-actions@causal-analyst-402006.iam.gserviceaccount.com"
 
