@@ -27,3 +27,6 @@ jobs:
 
       - name: "Use gcloud CLI"
         run: "gcloud info"
+
+      - name: "Get GCS"
+        run: "gcloud storage ls gs://oidc-test-bucket-example"
