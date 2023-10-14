@@ -19,14 +19,12 @@ jobs:
         name: "Authenticate to GCP"
         uses: "google-github-actions/auth@v1"
         with:
-          create_credentials_file: 'true'
+          create_credentials_file: 'false'
+          token_format: "access_token"
           workload_identity_provider: "principal://iam.googleapis.com/projects/1000907336307/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider"
           service_account: "github-actions@causal-analyst-402006.iam.gserviceaccount.com"
 
       - id: 'gcloud'
         name: 'gcloud'
         run: |-
-          echo $GOOGLE_APPLICATION_CREDENTIALS
-          GOOGLE_APPLICATION_CREDENTIALS=${{ steps.auth.outputs.credentials_file_path }}
-          echo $GOOGLE_APPLICATION_CREDENTIALS
-          gcloud storage ls gs://oidc-test-bucket-example
+          gcloud storage ls gs://oidc-test-bucket-example --project causal-analyst-402006 --access_token ${{ steps.auth.outputs.access_token }}
