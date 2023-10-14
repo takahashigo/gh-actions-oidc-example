@@ -22,9 +22,9 @@ jobs:
           workload_identity_provider: "principal://iam.googleapis.com/projects/1000907336307/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider"
           service_account: "github-actions@causal-analyst-402006.iam.gserviceaccount.com"
 
-          # Install gcloud, `setup-gcloud` automatically picks up authentication from `auth`.
-      - name: 'Set up Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v1'
+      #     # Install gcloud, `setup-gcloud` automatically picks up authentication from `auth`.
+      # - name: 'Set up Cloud SDK'
+      #   uses: 'google-github-actions/setup-gcloud@v1'
 
       # Now you can run gcloud commands authenticated as the impersonated service account.
       # - id: 'gcloud'
@@ -35,5 +35,5 @@ jobs:
       - id: 'gcloud'
         name: 'gcloud'
         run: |-
-          gcloud auth login
-          gcloud services list
+          gcloud auth login --cred-file=${{ steps.auth.outputs.credentials_file_path }}
+          # gcloud services list
