@@ -27,13 +27,13 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v1'
 
       # Now you can run gcloud commands authenticated as the impersonated service account.
+      # - id: 'gcloud'
+      #   name: 'gcloud'
+      #   run: |-
+      #     gcloud secrets versions access "latest" --secret "my-secret"
+
       - id: 'gcloud'
         name: 'gcloud'
         run: |-
-          gcloud secrets versions access "latest" --secret "my-secret"
-
-      # - id: 'gcloud'
-      - name: 'gcloud1'
-        run: |-
-          # gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
+          gcloud auth login
           gcloud services list
