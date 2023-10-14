@@ -21,11 +21,12 @@ jobs:
         with:
           workload_identity_provider: "principal://iam.googleapis.com/projects/1000907336307/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider"
           service_account: "github-actions@causal-analyst-402006.iam.gserviceaccount.com"
-      # - run: "gcloud storage ls gs://oidc-test-bucket-example"
 
       - name: Authenticate gcloud CLI
-        run: gcloud auth activate-service-account --key-file=${{ steps.auth.outputs.credentials_file_path}}
-
+        run: echo $GOOGLE_APPLICATION_CREDENTIALS
+          echo ${{ steps.auth.outputs.credentials_file_path}}
+          gcloud auth activate-service-account --key-file=${{ steps.auth.outputs.credentials_file_path}}
+          gcloud storage ls gs://oidc-test-bucket-example
       # - name: "Set up Cloud SDK"
       #   uses: "google-github-actions/setup-gcloud@v0"
 
@@ -37,4 +38,3 @@ jobs:
       #   run: "gcloud info"
 
       # - name: "Get GCS"
-
