@@ -22,5 +22,8 @@ jobs:
           workload_identity_provider: "principal://iam.googleapis.com/projects/1000907336307/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider"
           service_account: "github-actions@causal-analyst-402006.iam.gserviceaccount.com"
 
-      - name: "List services"
-        run: gcloud services list --project causal-analyst-402006
+      - id: 'gcloud'
+        name: 'gcloud'
+        run: |-
+            gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
+            gcloud services list
