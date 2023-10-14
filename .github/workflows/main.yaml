@@ -23,9 +23,8 @@ jobs:
           service_account: "github-actions@causal-analyst-402006.iam.gserviceaccount.com"
 
       - name: Authenticate gcloud CLI
-        run: echo $GOOGLE_APPLICATION_CREDENTIALS
-          echo ${{ steps.auth.outputs.credentials_file_path}}
-          gcloud auth activate-service-account --key-file=${{ steps.auth.outputs.credentials_file_path}}
+        run:
+          gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
           gcloud storage ls gs://oidc-test-bucket-example
       # - name: "Set up Cloud SDK"
       #   uses: "google-github-actions/setup-gcloud@v0"
