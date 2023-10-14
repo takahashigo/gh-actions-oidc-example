@@ -26,5 +26,6 @@ jobs:
       - id: 'gcloud'
         name: 'gcloud'
         run: |-
-            gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
-            gcloud services list --project=causal-analyst-402006
+          gcloud storage ls gs://oidc-test-bucket-example
+      #       gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
+      #       gcloud services list --project=causal-analyst-402006
