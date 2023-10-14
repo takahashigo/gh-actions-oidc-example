@@ -21,5 +21,6 @@ jobs:
         with:
           workload_identity_provider: "principal://iam.googleapis.com/projects/1000907336307/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider"
           service_account: "github-actions@causal-analyst-402006.iam.gserviceaccount.com"
-        run: gcloud services list --project causal-analyst-402006
 
+      - name: "List services"
+        run: gcloud services list --project causal-analyst-402006
