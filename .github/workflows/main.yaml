@@ -26,5 +26,7 @@ jobs:
       - id: 'gcloud'
         name: 'gcloud'
         run: |-
+          echo $GOOGLE_APPLICATION_CREDENTIALS
           GOOGLE_APPLICATION_CREDENTIALS=${{ steps.auth.outputs.credentials_file_path }}
+          echo $GOOGLE_APPLICATION_CREDENTIALS
           gcloud storage ls gs://oidc-test-bucket-example
