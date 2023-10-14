@@ -12,15 +12,14 @@ jobs:
   Get_OIDC_ID_token:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - id: "auth"
         name: "Authenticate to GCP"
         uses: "google-github-actions/auth@v1"
         with:
-          # create_credentials_file: "true"
           workload_identity_provider: "principal://iam.googleapis.com/projects/1000907336307/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider"
           service_account: "github-actions@causal-analyst-402006.iam.gserviceaccount.com"
-      # - id: "gcloud"
-      #   name: "gcloud"
-      #   run: |-
-      #     gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
-      #     gcloud services list --project causal-analyst-402006
+        run: gcloud services list --project causal-analyst-402006
+
