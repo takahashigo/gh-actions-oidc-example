@@ -25,6 +25,11 @@ jobs:
           workload_identity_provider: "principal://iam.googleapis.com/projects/1000907336307/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider"
           service_account: "github-actions@causal-analyst-402006.iam.gserviceaccount.com"
 
+      - name: "Set up GCloud SDK"
+        uses: "google-github-actions/setup-gcloud@v1"
+        with:
+          version: "latest"
+
       - id: 'gcloud'
         name: 'gcloud'
         run: |-
