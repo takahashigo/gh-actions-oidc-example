@@ -22,18 +22,22 @@ jobs:
           workload_identity_provider: "principal://iam.googleapis.com/projects/1000907336307/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider"
           service_account: "github-actions@causal-analyst-402006.iam.gserviceaccount.com"
 
-      - name: Authenticate gcloud CLI
-        run:
-          gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
-          gcloud storage ls gs://oidc-test-bucket-example
-      # - name: "Set up Cloud SDK"
-      #   uses: "google-github-actions/setup-gcloud@v0"
 
-      # - name: "Authenticate gcloud with the service account"
-      #   run: |
-      #     gcloud auth activate-service-account --key-file=${{ steps.auth.outputs.credentials_file_path}}
+      # - name: Authenticate gcloud CLI
+      #   run:
+      #       echo $GOOGLE_APPLICATION_CREDENTIALS
+      #       echo ${{ steps.auth.outputs.credentials_file_path}}
+      #       gcloud auth activate-service-account --key-file=${{ steps.auth.outputs.credentials_file_path}}
+      #       gcloud storage ls gs://oidc-test-bucket-example
+      # # - name: "Set up Cloud SDK"
+      # #   uses: "google-github-actions/setup-gcloud@v0"
 
-      # - name: "Use gcloud CLI"
-      #   run: "gcloud info"
+      # # - name: "Authenticate gcloud with the service account"
+      # #   run: |
+      # #     gcloud auth activate-service-account --key-file=${{ steps.auth.outputs.credentials_file_path}}
 
-      # - name: "Get GCS"
+      # # - name: "Use gcloud CLI"
+      # #   run: "gcloud info"
+
+      # # - name: "Get GCS"
+
