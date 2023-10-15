@@ -1,8 +1,7 @@
-# TODO GCSのバケットを作成
 terraform {
   backend "gcs" {
-    bucket  = "task-app-terraform-state"
-    prefix  = "/state"
+    bucket = "task-app-terraform-state"
+    prefix = "/state"
   }
 
   required_providers {
@@ -17,3 +16,5 @@ provider "google" {
   project = "causal-analyst-402006"
   region  = "asia-northeast1"
 }
+
+
