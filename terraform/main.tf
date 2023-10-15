@@ -2,7 +2,7 @@
 terraform {
   backend "gcs" {
     bucket  = "task-app-terraform-state"
-    prefix  = "terraform/state"
+    prefix  = "/state"
   }
 
   required_providers {
