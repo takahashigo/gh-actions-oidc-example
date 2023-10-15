@@ -48,17 +48,14 @@ jobs:
       - name: Authenticate with OIDC
         uses: google-github-actions/auth@v0.4.0
         with:
-          workload_identity_provider: "projects/${{ env.GCP_PROJECT_NUMBER }}/locations/global/workloadIdentityPools/${{ env.GCP_POOL_ID }}/providers/${{ env.GCP_PROVIDER_ID }}"
-          service_account: "${{ env.GCP_SERVICE_ACCOUNT }}"
+          workload_identity_provider: "projects/${{ secrets.GCP_PROJECT_NUMBER }}/locations/global/workloadIdentityPools/${{ secrets.GCP_POOL_ID }}/providers/${{ secrets.GCP_PROVIDER_ID }}"
+          service_account: "${{ secrets.GCP_SERVICE_ACCOUNT }}"
 
-      - name: 'Set up Cloud SDK'
-        uses: 'google-github-actions/setup-gcloud@v1'
-        with:
-          version: '>= 363.0.0'
-
-      - name: 'Use gcloud CLI'
-        run: 'gcloud info'
-
+      # - name: frontend ci and server ci settings
+      # - name: 'Set up Cloud SDK'
+      #   uses: 'google-github-actions/setup-gcloud@v1'
+      #   with:
+      #     version: '>= 363.0.0'
 
       - name: Terraform Format
         id: fmt
