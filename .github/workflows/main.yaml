@@ -18,11 +18,11 @@ defaults:
 
 env:
   # GCP
-  GCP_PROJECT_ID: "causal-analyst-402006" # Update this with your GCP project ID
-  GCP_PROJECT_NUMBER: 1000907336307 # Update this with your GCP project number
-  GCP_POOL_ID: "github-actions-pool" # Update this with your Workload Identity Pool ID
-  GCP_PROVIDER_ID: "github-actions-provider" # Update this with your Workload Identity Provider ID
-  GCP_SERVICE_ACCOUNT: "github-actions@causal-analyst-402006.iam.gserviceaccount.com" # Update this with your service account mail address
+  GCP_PROJECT_ID: "causal-analyst-402006"
+  GCP_PROJECT_NUMBER: 1000907336307
+  GCP_POOL_ID: "github-actions-pool"
+  GCP_PROVIDER_ID: "github-actions-provider"
+  GCP_SERVICE_ACCOUNT: "github-actions@causal-analyst-402006.iam.gserviceaccount.com"
 
 permissions:
   id-token: write
@@ -50,6 +50,15 @@ jobs:
         with:
           workload_identity_provider: "projects/${{ env.GCP_PROJECT_NUMBER }}/locations/global/workloadIdentityPools/${{ env.GCP_POOL_ID }}/providers/${{ env.GCP_PROVIDER_ID }}"
           service_account: "${{ env.GCP_SERVICE_ACCOUNT }}"
+
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v1'
+        with:
+          version: '>= 363.0.0'
+
+      - name: 'Use gcloud CLI'
+        run: 'gcloud info'
+
 
       - name: Terraform Format
         id: fmt
