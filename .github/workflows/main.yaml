@@ -57,6 +57,10 @@ on:
     branches:
       - main
 
+defaults:
+  run:
+    working-directory: terraform
+
 env:
   # GCP
   GCP_PROJECT_ID: "causal-analyst-402006" # Update this with your GCP project ID
