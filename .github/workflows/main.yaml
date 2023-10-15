@@ -1,61 +1,16 @@
-# name: List services in GCP
-# on:
-#   push:
-#     branches:
-#       - main
-
-# permissions:
-#   id-token: write
-#   contents: read
-
-# jobs:
-#   Get_OIDC_ID_token:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v4
-
-#       - id: "auth"
-#         name: "Authenticate to GCP"
-#         uses: "google-github-actions/auth@v1"
-#         with:
-#           workload_identity_provider: "principal://iam.googleapis.com/projects/1000907336307/locations/global/workloadIdentityPools/github-actions-pool/providers/github-actions-provider"
-#           service_account: "github-actions@causal-analyst-402006.iam.gserviceaccount.com"
-
-#       # - name: Authenticate gcloud CLI
-#       #   run:
-#       #       echo $GOOGLE_APPLICATION_CREDENTIALS
-#       #       echo ${{ steps.auth.outputs.credentials_file_path}}
-#       #       gcloud auth activate-service-account --key-file=${{ steps.auth.outputs.credentials_file_path}}
-#       #       gcloud storage ls gs://oidc-test-bucket-example
-#       # # - name: "Set up Cloud SDK"
-#       # #   uses: "google-github-actions/setup-gcloud@v0"
-
-#       # # - name: "Authenticate gcloud with the service account"
-#       # #   run: |
-#       # #     gcloud auth activate-service-account --key-file=${{ steps.auth.outputs.credentials_file_path}}
-
-#       # # - name: "Use gcloud CLI"
-#       # #   run: "gcloud info"
-
-# # - name: "Get GCS"
-
 name: "Terraform"
 
 on:
-  # push:
-  #   branches:
-  #     - main
-  #   paths:
-  #     - "terraform/**"
-  # pull_request:
-  #   branches:
-  #     - main
-  #   paths:
-  #     - "terraform/**"
   push:
     branches:
       - main
+    paths:
+      - "terraform/**"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "terraform/**"
 
 defaults:
   run:
@@ -89,12 +44,6 @@ jobs:
           tar xzf /tmp/tfcmt.tar.gz -C /tmp
           mv /tmp/tfcmt /usr/local/bin
           tfcmt --version
-
-      # - name: Set up Google Cloud SDK
-      #   uses: google-github-actions/setup-gcloud@v0.3.0
-      #   with:
-      #     project_id: ${{ env.GCP_PROJECT_ID }}
-      #     version: "latest"
 
       - name: Authenticate with OIDC
         uses: google-github-actions/auth@v0.4.0
