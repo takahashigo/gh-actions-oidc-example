@@ -1,8 +1,8 @@
 resource "google_storage_bucket" "example-gh-actions-terraform" {
-  name          = "example-gh-actions-terraform"
-  location      = "asia-northeast1"
+  name     = "example-gh-actions-terraform"
+  location = "asia-northeast1"
 
-  force_destroy = true
+  force_destroy               = true
   uniform_bucket_level_access = true
   lifecycle_rule {
     condition {
