@@ -7,15 +7,13 @@ terraform {
 
   required_providers {
     google = {
-      source  = "hashicorp/google" # プロバイダーのソース
-      version = "5.1.0" # プロバイダーのバージョン
+      source  = "hashicorp/google"
+      version = "5.1.0"
     }
   }
 }
 
 provider "google" {
-  project = "causal-analyst-402006" # プロジェクトIDを設定
-  region  = "asia-northeast1" # リージョンを設定
-  # credentials = file(local.credentials_path) # パスをサービスアカウントキーのJSONファイルに設定
-  # zone = "asia-northeast1-a" # ゾーンを設定
+  project = "causal-analyst-402006"
+  region  = "asia-northeast1"
 }
