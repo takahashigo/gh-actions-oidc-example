@@ -3,7 +3,6 @@ terraform {
   backend "gcs" {
     bucket  = "task-app-terraform-state"
     prefix  = "terraform/state"
-    region  = "asia-northeast1" # バケットのリージョン
   }
 
   required_providers {

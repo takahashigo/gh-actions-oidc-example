@@ -102,9 +102,9 @@ jobs:
           workload_identity_provider: "projects/${{ env.GCP_PROJECT_NUMBER }}/locations/global/workloadIdentityPools/${{ env.GCP_POOL_ID }}/providers/${{ env.GCP_PROVIDER_ID }}"
           service_account: "${{ env.GCP_SERVICE_ACCOUNT }}"
 
-      # - name: Terraform Format
-      #   id: fmt
-      #   run: terraform fmt -check
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check
 
       - name: Terraform Init
         id: init
